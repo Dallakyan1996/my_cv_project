@@ -30,7 +30,7 @@ $plusLanguage.on("click", function () {
   removeLanguageFn();
 });
 $plusExparience.on("click", function () {
-  $($exparienceDiv[0]).after('<div class="exparience_item"><div class="date_exparience"><span class="exparience_remove">-</span><div><input type="text" class="form__field exparience_input"value="2019-PRESENT"></input><input type="text" class="form__field exparience_input"value="COMPANY-NAME"></input></div></div><div class="exparience_description"><input type="text" class="form__field exparience_position"value="WEB DEVELOPER"></input><textarea>I am an enthusiastic, self-motivated, reliable, responsible and hard working person.</textarea></div></div>')
+  $($exparienceDiv[0]).after('<div class="exparience_item"><div class="date_exparience"><span class="exparience_remove">-</span><div><textarea class="exparience_input">2019-PRESENT&#13;&#10;COMPANY-NAME</textarea></div ></div > <div class="exparience_description"><input type="text" class="form__field exparience_position" value="WEB DEVELOPER"></input><textarea>I am an enthusiastic, self-motivated, reliable, responsible and hard working person.</textarea></div></div > ')
   $exparienceList = $(".exparience_item");
   removeExparienceFn();
 });
