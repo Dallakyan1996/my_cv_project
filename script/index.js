@@ -15,14 +15,14 @@ var $interestDiv = document.getElementsByClassName("interest_content");
 var $skillsDiv = document.getElementsByClassName("skills_wrapper");
 
 $plusEducation.on("click", function () {
- $($educationDiv[0]).after('<div class="education_div"><div class="education_item"><div class="remove_wrapper"><p class="remove_education">-</p><input type="text" class="eduaction_date form__field" value="2013-2017"></input> </div><input type="text" class="education_content form__field"value="Master Degree in Computer Science"></input><input type="text" class="university_p form__field" value="University Name"></input></div>')
-    // $educationDiv[0].appendChild('div')
-    $educationList = $(".education_item");
+  $($educationDiv[0]).after('<div class="education_div"><div class="education_item"><div class="remove_wrapper"><p class="remove_education">-</p><input type="text" class="eduaction_date form__field" value="2013-2017"></input> </div><input type="text" class="education_content form__field"value="Master Degree in Computer Science"></input><input type="text" class="university_p form__field" value="University Name"></input></div>')
+  // $educationDiv[0].appendChild('div')
+  $educationList = $(".education_item");
   removeEducationFn();
 });
 $plusInterest.on("click", function () {
- $($interestDiv[0]).after('<div class="interest_item"><div><div class="circle_div"></div><input type="text" class="form__field exparience_position" value="Gaming"></input></div></div>')
-
+  $($interestDiv[0]).after('<div class="interest_item"><div><div class="circle_div"></div><input type="text" class="form__field exparience_position" value="Gaming"></input></div></div>')
+  removeInterestFn();
 });
 $plusLanguage.on("click", function () {
   $($languageDiv[0]).after('<div class="contacts_item language_item"><div class="language_remove_wrapper"><span class="language_remove">-</span>    <input type="text" class="language_input eduaction_date form__field" value="English"></input></div><input class="language_progress progress_interest" type="range" /></div>')
@@ -43,8 +43,13 @@ $plusSkills.on("click", function () {
 
 function removeEducationFn() {
   var $educationList = $(".education_item");
-
   $educationList.on("click", ".remove_education", function (e) {
+    e.delegateTarget.remove();
+  });
+}
+function removeInterestFn() {
+  var $interestList = $(".interest_item");
+  $interestList.on("click", ".circle_div", function (e) {
     e.delegateTarget.remove();
   });
 }
@@ -67,6 +72,8 @@ function removeLanguageFn() {
     e.delegateTarget.remove();
   });
 }
+
+removeInterestFn();
 removeExparienceFn();
 removeSkillsFn();
 removeLanguageFn();

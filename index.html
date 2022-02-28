@@ -23,13 +23,18 @@
                 <div class="avatar_div">
                     <img src="https://pickaface.net/gallery/avatar/20140327_063356_4330_CV.png" />
                 </div>
+                <main>
+                    <div class="dropzone">
+                        <input type="file" class="files" id="images" accept="image/png, image/jpeg" multiple />
+                        <!-- <label for="file">Select file</label> -->
+                    </div>
+                </main>
                 <div class="name_div">
                     <div class="name_p">
                         <input type="text" class="form__field name_p" value="Jhon Smith"></input>
                     </div>
                     <!-- <p class="">Web Developer</p> -->
                     <input type="text" class="form__field position_p" value="Web Developer"></input>
-
                     <div class="line_div"></div>
                 </div>
                 <div class="contacts_div">
@@ -176,13 +181,42 @@
                         </div>
                     </div>
                 </div>
-                <div id="editor">test</div>
 
-                <button id="cmd">generate PDF</button>
+                <!-- <div id="editor">test</div>
+
+                <button id="cmd">generate PDF</button> -->
 </body>
 <script src="script/index.js"></script>
 <script>
+    const imageList = document.querySelector('.avatar_div');
 
+    const handleImages = (files) => {
+        // get valid images
+        let validImages = [...files].filter((file) =>
+            ['image/jpeg', 'image/png'].includes(file.type)
+        );
+        //  show the image
+        validImages.forEach(showImage);
+        // upload files
+        // uploadImages(validImages);
+    };
+    const fileInput = document.querySelector('.files');
+
+    fileInput.addEventListener('change', (e) => {
+        const { files } = e.target;
+        handleImages(files);
+    });
+    const showImage = (image) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(image);
+        reader.addEventListener('load', (e) => {
+            const div = document.createElement('div');
+            div.classList.add('image');
+            imageList.innerHTML = `
+            <img src="${e.target.result}" alt="${image.name}">
+        `;
+        });
+    };
 </script>
 
 
